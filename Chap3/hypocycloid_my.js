@@ -9,7 +9,7 @@ var maxNumVertices  = 3 * maxNumTriangles;
 var index = 0;
 var theta = 0.0;
 var R = 1.0;
-var r = 1.0/Math.sqrt(2);
+var r = 1.0/Math.E;
 var vBuffer;
 
 var colors = [

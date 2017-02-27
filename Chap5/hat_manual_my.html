@@ -1,0 +1,104 @@
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width,target-densitydpi=device-dpi,initial-scale=0.36, minimum-scale=0.36 maximum-scale=0.36, user-scalable=no"/>
+</head>
+
+<p align="right">
+modle
+<button id = "btn_m_left">left</button>
+<button id = "btn_m_up">up</button>
+<button id = "btn_m_far">far</button>
+<button id = "btn_m_right">right</button>
+<button id = "btn_m_down">down</button>
+<button id = "btn_m_near">near</button>
+<p>
+
+<p align="right">
+view
+<button id = "btn_v_left">left</button>
+<button id = "btn_v_up">up</button>
+<button id = "btn_v_far">far</button>
+<button id = "btn_v_right">right</button>
+<button id = "btn_v_down">down</button>
+<button id = "btn_v_near">near</button>
+<p>
+
+<p>
+<div id = "lable_mp"> </div>
+</p>
+<p>
+<div id = "lable_vp"> </div>
+</p>
+
+
+<p align="right" id = "lable_yaw">
+</p>
+<p align="right">
+<button id = "btn_yaw_in">Yaw Increase</button>
+<button id = "btn_yaw_de">Yaw Decrease</button>
+</p>
+
+<p align="right" id = "lable_pitch">
+</p>
+<p align="right">
+<button id = "btn_pitch_in">Pitch Increase</button>
+<button id = "btn_pitch_de">Pitch Decrease</button>
+</p>
+
+<p align="right" id = "lable_roll">
+</p>
+<p align="right">
+<button id = "btn_roll_in">Roll Increase</button>
+<button id = "btn_roll_de">Roll Decrease</button>
+</p>
+
+
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+
+attribute  vec4 vPosition;
+
+uniform mat4 modelMatrix;
+uniform mat4 viewMatrix;
+uniform mat4 projectionMatrix;
+
+void main() 
+{
+    gl_Position = projectionMatrix*viewMatrix*modelMatrix*vPosition;
+} 
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+
+precision mediump float;
+
+uniform vec4 fColor;
+
+void
+main()
+{
+    gl_FragColor = fColor;
+}
+</script>
+
+<script type="text/javascript" src="../Common/webgl-utils.js"></script>
+<script type="text/javascript" src="../Common/initShaders.js"></script>
+<script type="text/javascript" src="../Common/MV.js"></script>
+<script type="text/javascript" src="../Common/debug.js"></script>
+<script type="text/javascript" src="hat_manual_my.js"></script>
+
+<body>
+
+
+<canvas id="gl-canvas" width="1024" height="1024">
+Oops ... your browser doesn't support the HTML5 canvas element
+</canvas>
+
+
+
+</body>
+</html>

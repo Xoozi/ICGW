@@ -1,0 +1,141 @@
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width,target-densitydpi=device-dpi,initial-scale=0.36, minimum-scale=0.36 maximum-scale=0.36, user-scalable=no"/>
+</head>
+
+<style>
+	.div-relative{position:relative}
+	.div-a{ position:absolute}
+	.div-left-0{ position:absolute; left:30px; top:30px; width:512px; height:256px}
+	.div-right-0{ position:absolute; left:532px; top:30px; width:512px; height:256px}
+	.div-left-1{ position:absolute; left:30px; top:286px; width:512px; height:256px}
+	.div-right-1{ position:absolute; left:532px; top:286px; width:512px; height:256px}
+</style>
+
+
+
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+
+attribute  vec4 vPosition;
+
+uniform mat4 modelMatrix;
+uniform mat4 viewMatrix;
+uniform mat4 projectionMatrix;
+
+void main() 
+{
+    gl_Position = projectionMatrix*viewMatrix*modelMatrix*vPosition;
+} 
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+
+precision mediump float;
+
+uniform vec4 fColor;
+
+void
+main()
+{
+    gl_FragColor = fColor;
+}
+</script>
+
+<script type="text/javascript" src="../Common/webgl-utils.js"></script>
+<script type="text/javascript" src="../Common/initShaders.js"></script>
+<script type="text/javascript" src="../Common/MV.js"></script>
+<script type="text/javascript" src="../Common/debug.js"></script>
+<script type="text/javascript" src="hat_manual2_my.js"></script>
+
+<body>
+
+<div class="div-relative">
+	<div class="div-a">
+		<canvas id="gl-canvas" width="1024" height="2048">
+		Oops ... your browser doesn't support the HTML5 canvas element
+		</canvas>
+	</div>
+
+	<div class="div-a">
+			<div class="div-left-0">
+			model
+			<button id = "btn_m_left">[  Left  ]</button>
+			<button id = "btn_m_right">[  Right  ]</button>
+			<button id = "btn_m_up">[  Up  ]</button>
+			<button id = "btn_m_down">[  Down  ]</button>
+			<button id = "btn_m_far">[  Far  ]</button>
+			<button id = "btn_m_near">[  Near  ]</button>
+			<div id = "lable_mp"> </div>
+			</div>
+
+			<div class="div-right-0">
+			view
+			<button id = "btn_v_left">[  Left  ]</button>
+			<button id = "btn_v_right">[  Right  ]</button>
+			<button id = "btn_v_up">[  Up  ]</button>
+			<button id = "btn_v_down">[  Down  ]</button>
+			<button id = "btn_v_far">[  Far  ]</button>
+			<button id = "btn_v_near">[  Near  ]</button>
+			<div id = "lable_vp"> </div>
+			</div>
+
+			<div class="div-left-1">
+				<p id = "lable_model_yaw">
+				</p>
+				<p>
+				<button id = "btn_model_yaw_in">Modle Yaw Increase</button>
+				<button id = "btn_model_yaw_de">Modle Yaw Decrease</button>
+				</p>
+
+				<p id = "lable_model_pitch">
+				</p>
+				<p >
+				<button id = "btn_model_pitch_in">Modle Pitch Increase</button>
+				<button id = "btn_model_pitch_de">Modle Pitch Decrease</button>
+				</p>
+
+				<p id = "lable_model_roll">
+				</p>
+				<p >
+				<button id = "btn_model_roll_in">Modle Roll Increase</button>
+				<button id = "btn_model_roll_de">Modle Roll Decrease</button>
+				</p>
+			</div>
+
+			<div class="div-right-1">
+				<p align="right" id = "lable_view_yaw">
+				</p>
+				<p align="right">
+				<button id = "btn_view_yaw_in">View Yaw Increase</button>
+				<button id = "btn_view_yaw_de">View Yaw Decrease</button>
+				</p>
+
+				<p align="right" id = "lable_view_pitch">
+				</p>
+				<p align="right">
+				<button id = "btn_view_pitch_in">View Pitch Increase</button>
+				<button id = "btn_view_pitch_de">View Pitch Decrease</button>
+				</p>
+
+				<p align="right" id = "lable_view_roll">
+				</p>
+				<p align="right">
+				<button id = "btn_view_roll_in">View Roll Increase</button>
+				<button id = "btn_view_roll_de">View Roll Decrease</button>
+				</p>
+			</div>
+
+	</div>
+</div>
+</div>
+
+
+
+
+</body>
+</html>
